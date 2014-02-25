@@ -1,0 +1,15 @@
+section.account-settings {
+  @include outer-container;
+  margin: 2em;
+}
+
+section.settings-form {
+  @include span-columns(8);
+  @include shift(2);
+  margin-bottom: 6em;
+}
+
+.half {
+  @include span-columns(4 of 8);
+  @include omega(2n);
+}

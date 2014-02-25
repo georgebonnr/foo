@@ -1,0 +1,82 @@
+---
+title: Open Table
+---
+
+<div class="image-gradient-dynamic">
+  <img src="http://goo.gl/4KZExi" alt="">
+  <div class="copy">
+    <!--modal--!>
+    <div class="modal">
+      <label for="modal-1">
+        <div class="js-btn"><p>Let's Go</p></div>
+      </label>
+      <span>Log in to manage reservations</span>
+      <input class="modal-state" id="modal-1" type="checkbox" />
+      <div class="modal-window">
+        <label class="modal-bg" for="modal-1"></label>
+        <div class="modal-inner">
+          <label class="modal-close" for="modal-1"></label>
+            <h1>Employee Login</h1>
+            <form class="login">
+             <input type="text" name="name" placeholder="Username">
+             <input type="text" password="password" placeholder="Password">
+             <input type="submit">
+            </form>
+          <div class='modal-notification'></div>
+        </div>
+        
+          
+        </div>
+      </div>
+    </div>
+    <!--end modal--!>
+  </div>
+  <div class="overlay"></div>
+</div>
+
+<script>
+  $(document).ready(function () {
+
+    var $modalNotification = $('.modal-notification');
+
+    var $loginRequest = function(data){
+      $.ajax({
+        url: "/api/v1/login",
+        dataType: "json",
+        type: "POST",
+        data: data,
+        error: function(error){
+          console.log(error);
+          $modalNotification.html(error.responseJSON).slideDown().delay(5000).slideUp();
+        }
+      }).done(function(data){
+        if (data.redirect){
+          $modalNotification.html('redirect').slideDown();
+        } else {
+          $modalNotification.html('You have multiple accounts (not handled yet)').slideDown()
+        }
+      })
+    }
+
+    $('.login').on('submit',function(e){
+      e.preventDefault();
+      // this would be encrypted, of course.
+      $loginRequest({
+        email: e.target[0].value,
+        password: e.target[1].value
+      });
+    })
+
+    $('.modal').find('.js-btn').on('click', function() {
+      $(document.body).addClass('modal-open');
+    });
+
+    $('.modal-close').on('click', function() {
+      $(document.body).removeClass('modal-open');
+    })
+
+    $('.modal-bg').on('click', function() {
+      $(document.body).removeClass('modal-open');
+    })
+  })
+</script>

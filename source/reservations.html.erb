@@ -1,0 +1,118 @@
+---
+title: Open Table | Reservations
+---
+<nav class="date-time">
+  <ul>
+      <li><input type="date" name="date"></li>
+      <li><a href="">Jump to today</a></li>
+      <li><a href="">Morning</a></li>
+      <li><a href="">Afternoon</a></li>
+      <li><a href="">Evening</a></li>
+</nav>
+<div class="vertical-container">
+  <div class="vertical-tabs">
+    <div class="tabs">
+      <a href="" class="tab active" rel="tab1">5:00pm</a href="">
+      <a href="" class="tab" rel="tab2">5:30pm</a href="">
+      <a href="" class="tab" rel="tab3">6:00pm</a href="">
+      <a href="" class="tab" rel="tab4">6:30pm</a href="">
+      <a href="" class="tab" rel="tab5">7:00pm</a href="">
+      <a href="" class="tab" rel="tab6">7:30pm</a href="">
+      <a href="" class="tab" rel="tab7">8:00pm</a href="">
+      <a href="" class="tab" rel="tab8">8:30pm</a href="">
+      <a href="" class="tab" rel="tab9">9:00pm</a href="">
+      <a href="" class="tab" rel="tab10">9:30pm</a href="">
+      <a href="" class="tab" rel="tab10">9:30pm</a href="">
+      <a href="" class="tab" rel="tab10">9:30pm</a href="">
+      <a href="" class="tab" rel="tab10">9:30pm</a href="">
+      <a href="" class="tab" rel="tab10">9:30pm</a href="">
+    </div>
+  
+      
+
+    <div class="tab-container">
+        <a href="" class="accordion-active accordion-heading" rel="tab1">5PM</a>
+        <div id="tab1" class="tab-content">
+          <ul class="tables">
+            <li> <div class="table available">2</div> </li>
+            <li> <div class="table available">2</div> </li>
+            <li> <div class="table available">2</div> </li>
+            <li> <div class="table available">4</div> </li>
+            <li> <div class="table reserved">4</div> </li>
+            <li> <div class="table available">4</div> </li>
+            <li> <div class="table available">8</div> </li>
+            <li> <div class="table available">8</div> </li>
+          </ul>
+        </div>
+
+        <a href="" class="accordion-heading" rel="tab2">6:30</a>
+        <div id="tab2" class="tab-content">
+        </div>
+
+        <a href="" class="accordion-heading" rel="tab3">6:00</a>
+        <div id="tab3" class="tab-content">
+        </div>
+
+        <a href="" class="accordion-heading" rel="tab4">Item 4</a>
+        <div id="tab4" class="tab-content">
+        </div>
+
+        <a href="" class="accordion-heading" rel="tab5">Item 5</a>
+        <div id="tab5" class="tab-content">
+        </div>
+
+        <a href="" class="accordion-heading" rel="tab6">Item 6</a>
+        <div id="tab6" class="tab-content">
+        </div>
+
+        <a href="" class="accordion-heading" rel="tab7">Item 7</a>
+        <div id="tab7" class="tab-content">
+        </div>
+
+        <a href="" class="accordion-heading" rel="tab8">Item 8</a>
+        <div id="tab8" class="tab-content">
+        </div>
+
+        <a href="" class="accordion-heading" rel="tab9">Time</a>
+        <div id="tab8" class="tab-content">
+        </div>
+     </div>
+  </div>
+</div>
+
+
+<script>
+  $(".tab-content").hide();
+  $(".tab-content:first").show();
+
+  /* if in tab mode */
+  $(".tabs .tab").click(function() {
+    event.preventDefault()
+
+    //$(".tab-content").hide();
+    var activeTab = $(this).attr("rel"); 
+    //$("#"+activeTab).show();    
+
+    $(".tabs .tab").removeClass("active");
+    $(this).addClass("active");
+
+  $(".accordion-heading").removeClass("accordion-active");
+  $(".accordion-heading[rel^='"+activeTab+"']").addClass("accordion-active");
+
+  });
+
+  /* if in accordion mode */
+  $(".accordion-heading").click(function() {
+    event.preventDefault()
+
+    $(".tab-content").hide();
+    var accordion_activeTab = $(this).attr("rel"); 
+    $("#"+accordion_activeTab).show();
+
+  $(".accordion-heading").removeClass("accordion-active");
+    $(this).addClass("accordion-active");
+
+  $(".tabs .tab").removeClass("active");
+  $(".tabs .tab[rel^='"+accordion_activeTab+"']").addClass("active");
+  });
+</script>

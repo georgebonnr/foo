@@ -1,0 +1,14 @@
+%button {
+  background: $base-accent-color;
+  border-radius: 3px;
+  border: none;
+  box-shadow: none;
+  color: #fff;
+  font-size: $base-font-size;
+  outline: none;
+  padding: .5em 1em;
+
+  &:hover {
+  background: darken($base-accent-color, 9);
+  }
+}
