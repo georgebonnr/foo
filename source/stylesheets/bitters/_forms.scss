@@ -98,9 +98,4 @@ input[type="submit"] {
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-
-  &:hover {
-    border-top: 3px solid darken($base-accent-color, 20);
-    border-bottom: none;
-  }
 }
